@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".danh_muc_screen">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/tvdm">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh Mục Sản Phẩm"
+            android:textSize="30dp"
+            android:textColor="#13328E"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true">
+            <ImageButton
+                android:id="@+id/adddm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm danh mục"
+                android:id="@+id/namedm"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <GridView
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below = "@id/tvdm"
+        android:numColumns="2"
+        android:id="@+id/gvdm"
+        />
+</RelativeLayout>

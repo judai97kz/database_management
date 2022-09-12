@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "512324694465",
+    "project_id": "database-management-8694d",
+    "storage_bucket": "database-management-8694d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512324694465:android:fbd750acf0be4089da3f40",
+        "android_client_info": {
+          "package_name": "com.judai.database_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512324694465-ugo6jufb5r5fe3efp98qouh4u5nfitkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4wl_zSIxJHwrccemhH0iIpQH5xCH-5sE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512324694465-ugo6jufb5r5fe3efp98qouh4u5nfitkl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
