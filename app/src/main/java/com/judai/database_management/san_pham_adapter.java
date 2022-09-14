@@ -36,21 +36,34 @@ public class san_pham_adapter extends BaseAdapter {
         return 0;
     }
 
+    private class ViewHolder{
+        TextView tvname,tvamout,tvprice,tvsum;
+    }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(layout,null);
-        TextView tvname = view.findViewById(R.id.namesp);
-        TextView tvamout = view.findViewById(R.id.amoutSP);
-        TextView tvprice = view.findViewById(R.id.priceSP);
-        TextView tvsum = view.findViewById(R.id.sumSP);
+        ViewHolder holder;
+        if(view == null){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(layout,null);
+
+            holder = new ViewHolder();
+            holder.tvname = view.findViewById(R.id.namesp);
+            holder.tvamout = view.findViewById(R.id.amoutSP);
+            holder.tvprice = view.findViewById(R.id.priceSP);
+            holder.tvsum = view.findViewById(R.id.sumSP);
+            view.setTag(holder);
+        }
+        else{
+            holder = (ViewHolder) view.getTag();
+        }
 
         SPs = listSP.get(i);
-        tvname.setText("Tên Sản Phẩm : " + SPs.get_nameSP());
-        tvprice.setText("Đơn giá : "+SPs.get_priceSP());
-        tvamout.setText("Số lượng (còn lại) : "+SPs.get_amoutSP());
+        holder.tvname.setText("Tên Sản Phẩm : " + SPs.get_nameSP());
+        holder.tvprice.setText("Đơn giá : "+SPs.get_priceSP());
+        holder.tvamout.setText("Số lượng (còn lại) : "+SPs.get_amoutSP());
         int sum = SPs.get_amoutSP()*SPs.get_priceSP();
-        tvsum.setText("Tổng tiền vốn : " + sum);
+        holder.tvsum.setText("Tổng tiền vốn : " + sum);
         return view;
     }
 }

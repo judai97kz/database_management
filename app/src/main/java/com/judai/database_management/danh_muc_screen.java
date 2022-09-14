@@ -8,15 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -24,14 +22,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class danh_muc_screen extends AppCompatActivity {
     GridView gvdm;
-    ArrayList<String> _list;
-    ArrayAdapter<String> adapter;
+    ArrayList<DanhMuc> _list;
+    custom_item_danh_muc adapter;
     ImageButton adddm;
     public static String _nameDM;
     @Override
@@ -40,7 +41,7 @@ public class danh_muc_screen extends AppCompatActivity {
         setContentView(R.layout.activity_danh_muc_screen);
         gvdm = findViewById(R.id.gvdm);
         adddm = findViewById(R.id.adddm);
-        _list = new ArrayList<>();
+        _list = new ArrayList<DanhMuc>();
         show_data();
         adddm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +52,7 @@ public class danh_muc_screen extends AppCompatActivity {
         gvdm.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                _nameDM = adapter.getItem(i).toString().trim();
+                _nameDM = _list.get(i).get_nameDM().trim();
                 Intent gotoSP = new Intent(danh_muc_screen.this,san_pham_screen.class);
                 startActivity(gotoSP);
             }
@@ -71,14 +72,23 @@ public class danh_muc_screen extends AppCompatActivity {
     }
 
     public void show_data(){
+        _list.clear();
         MainActivity.myRef.child("Data/DanhMuc").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String d = snapshot.getKey().toString();
-                _list.add(d);
-                Set<String> set = new HashSet<String>(_list);
-                List<String> xoatrung = new ArrayList<String>(set);
-                adapter = new ArrayAdapter<>(danh_muc_screen.this, android.R.layout.simple_list_item_1,xoatrung);
+                _list.add(new DanhMuc(d));
+                Set<DanhMuc> set = new HashSet<DanhMuc>(_list);
+                List<DanhMuc> xoatrung = new ArrayList<DanhMuc>(set);
+                Collections.sort(xoatrung, new Comparator<DanhMuc>() {
+                    @Override
+                    public int compare(DanhMuc sv1, DanhMuc sv2) {
+                        return (sv1.get_nameDM().compareTo(sv2.get_nameDM()));
+                        // Muốn đảo danh sách các bạn đối thành
+                        //return (sv2.hoTen.compareTo(sv1.hoTen));
+                    }
+                });
+                adapter = new custom_item_danh_muc(xoatrung,danh_muc_screen.this,R.layout.danh_muc_custom);
                 gvdm.setAdapter(adapter);
             }
 
@@ -116,6 +126,7 @@ public class danh_muc_screen extends AppCompatActivity {
            public void onClick(DialogInterface dialogInterface, int i) {
                Toast.makeText(getBaseContext(),addnamedm.getText().toString().trim(),Toast.LENGTH_SHORT).show();
                MainActivity.myRef.child("Data/DanhMuc/"+addnamedm.getText().toString().trim()).setValue(addnamedm.getText().toString().trim());
+               adapter.notifyDataSetChanged();
            }
        });
        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {

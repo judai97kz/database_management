@@ -6,11 +6,14 @@
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/drawable/back.xml" value="0.1" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/drawable/border_button.xml" value="0.1" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout-land/dialog_custom.xml" value="0.12708333333333333" />
+        <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/activity_check.xml" value="0.12056434373663959" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/activity_danh_muc_screen.xml" value="0.18" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/activity_dialog_custom.xml" value="0.17074275362318841" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/activity_san_pham_screen.xml" value="0.13424540401881147" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/add_sp_dialog.xml" value="0.33" />
+        <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/change_data_layout.xml" value="0.33" />
+        <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/danh_muc_custom.xml" value="0.22" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/dialog_custom.xml" value="0.2" />
         <entry key="..\:/ProjectFlutter/database_management/app/src/main/res/layout/san_pham_adapter.xml" value="0.33" />
       </map>

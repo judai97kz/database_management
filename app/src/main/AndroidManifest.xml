@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Database_management"
         tools:targetApi="31">
         <activity
+            android:name=".check_activity"
+            android:exported="false" />
+        <activity
             android:name=".san_pham_screen"
             android:exported="false" />
         <activity
